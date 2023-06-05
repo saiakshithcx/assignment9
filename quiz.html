@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 10px;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    #submit-btn {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Quiz Application</h1>
+
+  <div id="quiz-container">
+    <div class="question">
+      <p>Question 1: What is the capital of France?</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="a">a) Paris</label>
+        <label><input type="radio" name="q1" value="b">b) Rome</label>
+        <label><input type="radio" name="q1" value="c">c) Madrid</label>
+        <label><input type="radio" name="q1" value="d">d) Berlin</label>
+      </div>
+    </div>
+    <div class="question">
+      <p>Question 2: What is the largest planet in our solar system?</p>
+      <div class="options">
+        <label><input type="radio" name="q2" value="a">a) Jupiter</label>
+        <label><input type="radio" name="q2" value="b">b) Saturn</label>
+        <label><input type="radio" name="q2" value="c">c) Earth</label>
+        <label><input type="radio" name="q2" value="d">d) Mars</label>
+      </div>
+    </div>
+
+
+    <button id="submit-btn" onclick="calculateScore()">Submit</button>
+  </div>
+
+  <script>
+    function calculateScore() {
+      var totalQuestions = 2; 
+      var score = 0;
+
+      var q1Answer = document.querySelector('input[name="q1"]:checked');
+      var q2Answer = document.querySelector('input[name="q2"]:checked');
+
+      if (q1Answer && q1Answer.value === "a") {
+        score++;
+      }
+      if (q2Answer && q2Answer.value === "a") {
+        score++;
+      }
+
+      var resultContainer = document.getElementById("quiz-container");
+      resultContainer.innerHTML = "<h2>Your Score: " + score + "/" + totalQuestions + "</h2>";
+    }
+  </script>
+</body>
+</html>
